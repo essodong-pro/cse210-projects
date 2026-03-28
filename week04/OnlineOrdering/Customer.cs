@@ -2,20 +2,26 @@ using System;
 
 public class Customer
 {
-    private string name;
-    private Address address;
+    private string _name;
+    private Address _address;
 
     public Customer(string name, Address address)
     {
-        this.name = name;
-        this.address = address;
+        _name = name;
+        _address = address;
     }
 
     public bool LivesInUSA()
     {
-        return address.IsInUSA();
+        return _address.IsInUSA();
     }
 
-    public string GetName() => name;
-    public Address GetAddress() => address;
+    public string GetName() => _name;
+    public Address GetAddress() => _address;
+
+    public void DisplayCustomerInfo()
+    {
+        Console.WriteLine($"Customer: {_name}");
+        Console.WriteLine($"Address: {_address.GetFullAddress()}");
+    }
 }

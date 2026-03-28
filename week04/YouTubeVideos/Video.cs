@@ -3,26 +3,31 @@ using System.Collections.Generic;
 
 public class Video
 {
-    public string Title { get; set; }
-    public string Author { get; set; }
-    public int Length { get; set; } // in seconds
-    private List<Comment> comments = new List<Comment>();
+    private string _title;
+    private string _author;
+    private int _length; // in seconds
+    private List<Comment> _comments = new List<Comment>();
 
     public Video(string title, string author, int length)
     {
-        Title = title;
-        Author = author;
-        Length = length;
+        _title = title;
+        _author = author;
+        _length = length;
     }
+
+    // Read-only properties
+    public string Title => _title;
+    public string Author => _author;
+    public int Length => _length;
 
     public void AddComment(Comment comment)
     {
-        comments.Add(comment);
+        _comments.Add(comment);
     }
 
     public int GetNumberOfComments()
     {
-        return comments.Count;
+        return _comments.Count;
     }
 
     public void DisplayVideoInfo()
@@ -32,7 +37,7 @@ public class Video
         Console.WriteLine($"Length: {Length} seconds");
         Console.WriteLine($"Number of comments: {GetNumberOfComments()}");
 
-        foreach (Comment c in comments)
+        foreach (Comment c in _comments)
         {
             Console.WriteLine($" - {c.CommenterName}: {c.Text}");
         }
